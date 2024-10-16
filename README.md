@@ -12,3 +12,19 @@ npx tailwindcss init -p
 ```js
 npm i -D daisyui@latest
 ```
+
+3. install i18next
+
+```js
+npm i react-i18next i18next
+```
+
+4. install i18next-browser-languagedetector
+
+```js
+npm i i18next-browser-languagedetector
+```
+
+5. creating navbar in header
+
+6. creating about and contact component
