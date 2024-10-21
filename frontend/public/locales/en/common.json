@@ -21,5 +21,9 @@
   "sendMessage": "Send Message",
   "welcome": "Welcome to My Photography Website",
   "introduction": "I am a passionate photographer dedicated to capturing your most precious moments. Explore my work and let’s create something beautiful together.",
-  "backToTop": "return top"
+  "backToTop": "return top",
+  "welcomeMessage": "Welcome to Our Testimonials",
+  "testimonials": "Testimonials",
+  "footerContent": " All Rights Reserved Eyal",
+  "testimonialMessage": "Testimonial sent successfully"
 }

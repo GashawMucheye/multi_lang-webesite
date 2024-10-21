@@ -66,6 +66,15 @@ const Navbar = () => {
               {t('contact')}
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/testimonials"
+              className="hover:text-gray-300"
+              activeClassName="font-bold"
+            >
+              {t('testimonials')}
+            </NavLink>
+          </li>
         </ul>
 
         {/* Language Selector */}
@@ -146,6 +155,15 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               {t('contact')}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/testimonials"
+              className="block hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t('testimonials')}
             </NavLink>
           </li>
         </ul>

@@ -27,4 +27,11 @@ npm i i18next-browser-languagedetector
 
 5. creating navbar in header
 
-6. creating about and contact component
+6. creating about and contact component,
+
+7. creating Backend Side By Using Express And store Data In MongoDB.
+
+```js
+npm init-y
+npm i express colors dotenv mongoose
+```

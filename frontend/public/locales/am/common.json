@@ -21,5 +21,9 @@
   "sendMessage": "መልእክት ላክ",
   "welcome": "እንኳን ወደ የእኔ ፎቶግራፍ ድረ-ገጽ መጡ",
   "introduction": "እኔ የተልባቸውን ሳይጠላ ፎቶግራፍ ነኝ፣ እንዲሁም ልባቸውን በልቅም በብልሙ እና በነዋሪነት እናገራለሁ።",
-  "backToTop": "ላየ የመለሱ"
+  "backToTop": "ላየ የመለሱ",
+  "welcomeMessage": "እንኳን ወደ መረጃዎቻችን በደህና መጡ",
+  "testimonials": "መረጃዎች",
+  "footerContent": " ያለን መብቶች ሁሉ የተረጋገጡ ኢያል.",
+  "testimonialMessage": "እቅፍ በሚገኙ ሁኔታ ተላክቷል።"
 }
