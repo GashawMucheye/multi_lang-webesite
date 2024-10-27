@@ -17,9 +17,11 @@ mongoose
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 const testimonialsRoute = require('./routes/testimonials');
+const routerMessage = require('./routes/sendEmail');
 app.use('/api/testimonials', testimonialsRoute);
+app.use('/api/sendMessage', routerMessage);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`.bgYellow.underline);
 });

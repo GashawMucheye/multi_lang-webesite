@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 const Contact = () => {
   const { t } = useTranslation('common');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [subject, setSubject] = useState('');
+  const [phone, setPhone] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await axios.post('http://localhost:3000/api/sendMessage', {
+      name,
+      email,
+      phone,
+      message,
+      subject,
+    });
+    console.log(response);
+    toast.success('message sent successfully');
+    setName('');
+    setEmail('');
+    setMessage('');
+    setPhone('');
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
@@ -10,7 +34,7 @@ const Contact = () => {
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           {t('contactUs')}
         </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           {/* Name Field */}
           <div className="mb-4">
             <label
@@ -21,10 +45,12 @@ const Contact = () => {
             </label>
             <input
               type="text"
+              value={name}
               id="name"
               name="name"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('yourName')}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -39,10 +65,30 @@ const Contact = () => {
             </label>
             <input
               type="email"
+              value={email}
               id="email"
               name="email"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('yourEmail')}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="phone"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              {t('phone')}
+            </label>
+            <input
+              type="text"
+              value={phone}
+              id="phone"
+              name="phone"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder={t('yourPhone')}
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
@@ -57,10 +103,12 @@ const Contact = () => {
             </label>
             <input
               type="text"
+              value={subject}
               id="subject"
               name="subject"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('subjectPlaceholder')}
+              onChange={(e) => setSubject(e.target.value)}
               required
             />
           </div>
@@ -75,9 +123,11 @@ const Contact = () => {
             </label>
             <textarea
               id="message"
+              value={message}
               name="message"
               className="w-full p-3 h-32 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('yourMessage')}
+              onChange={(e) => setMessage(e.target.value)}
               required
             ></textarea>
           </div>

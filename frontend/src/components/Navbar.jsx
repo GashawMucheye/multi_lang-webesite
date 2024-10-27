@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n'; // Adjust the path as needed
-
+import { MdDarkMode } from 'react-icons/md';
+import { CiLight } from 'react-icons/ci';
 const Navbar = () => {
   const { t } = useTranslation('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const handleLanguageChange = (event) => {
     const selectedLanguage = event.target.value;
@@ -21,7 +23,7 @@ const Navbar = () => {
   }, [i18n.language]);
 
   return (
-    <nav className="bg-blue-600 p-4">
+    <nav className="bg-slate-600 p-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* <div className="text-white text-lg font-semibold">Photographer</div> */}
         <Link to={'/'} className="text-white text-lg font-semibold">
@@ -33,8 +35,9 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/"
-              className="hover:text-gray-300"
-              activeClassName="font-bold"
+              className={({ isActive }) =>
+                isActive ? ' font-bold border border-solid border-red-300' : ''
+              }
             >
               {t('home')}
             </NavLink>
@@ -42,8 +45,14 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/about"
-              className="hover:text-gray-300"
-              activeClassName="font-bold"
+              className={({ isActive }) =>
+                isActive
+                  ? ' font-bold border border-solid border-red-300 mr-4'
+                  : 'mr-4'
+              }
+              // className={
+              //   i18n.changeLanguage == 'he' ? 'bg-red-600' : 'bg-black mr-4'
+              // }
             >
               {t('about')}
             </NavLink>
@@ -51,8 +60,9 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/gallery"
-              className="hover:text-gray-300"
-              activeClassName="font-bold"
+              className={({ isActive }) =>
+                isActive ? ' font-bold border border-solid border-red-300' : ''
+              }
             >
               {t('gallery')}
             </NavLink>
@@ -60,8 +70,9 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/contact"
-              className="hover:text-gray-300"
-              activeClassName="font-bold"
+              className={({ isActive }) =>
+                isActive ? ' font-bold border border-solid border-red-300' : ''
+              }
             >
               {t('contact')}
             </NavLink>
@@ -69,13 +80,22 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/testimonials"
-              className="hover:text-gray-300"
-              activeClassName="font-bold"
+              className={({ isActive }) =>
+                isActive ? ' font-bold border border-solid border-red-300' : ''
+              }
             >
               {t('testimonials')}
             </NavLink>
           </li>
         </ul>
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            alert('clicked');
+          }}
+        >
+          {isDark ? <MdDarkMode size={24} /> : <CiLight size={24} />}
+        </div>
 
         {/* Language Selector */}
         <div className="flex items-center space-x-4 text-white">
@@ -120,51 +140,51 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <ul className="md:hidden bg-blue-600 text-white space-y-2 mt-2 p-4">
+        <ul className="md:hidden bg-red-600 text-white space-y-3 mt-2 p-4 w-[200px]">
           <li>
-            <NavLink
+            <Link
               to="/"
               className="block hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('home')}
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/about"
               className="block hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('about')}
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/gallery"
               className="block hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('gallery')}
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/contact"
               className="block hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('contact')}
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/testimonials"
               className="block hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('testimonials')}
-            </NavLink>
+            </Link>
           </li>
         </ul>
       )}

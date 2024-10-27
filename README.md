@@ -35,3 +35,9 @@ npm i i18next-browser-languagedetector
 npm init-y
 npm i express colors dotenv mongoose
 ```
+
+8. install nodemailer package.
+
+```js
+npm i nodemailer
+```

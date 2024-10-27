@@ -1,45 +1,100 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import StarRatings from 'react-star-ratings';
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslation } from 'react-i18next';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Testimonials = () => {
   const { t } = useTranslation('common');
-  const [testimonials, setTestimonials] = useState([]);
+  const [testimonialData, setTestimonialData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/testimonials')
-      .then((response) => setTestimonials(response.data))
-      .catch((error) => console.error('Error fetching testimonials:', error));
+    const fetchTestimonial = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(
+          'http://localhost:3000/api/testimonials'
+        );
+        setLoading(false);
+        setTestimonialData(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchTestimonial();
   }, []);
 
-  return (
-    <div className="py-8 px-6">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        {t('testimonials')}
-      </h2>
-      <div className="max-w-4xl mx-auto space-y-4">
-        {testimonials.map((testimonial) => (
-          <div
-            key={testimonial._id}
-            className="bg-white p-6 rounded-lg shadow-md flex items-center"
-          >
-            <img
-              src={`http://localhost:3000/${testimonial.imageUrl}`}
-              // src={`https://media.istockphoto.com/id/1265024528/photo/no-better-adventure-buddy.webp?a=1&b=1&s=612x612&w=0&k=20&c=tStWgNSFBAGPyu4gfJfDEjqMPDnvgqWUkIPyZYGS090=`}
-              alt={testimonial.name}
-              className="w-16 h-16 rounded-full mr-4"
-            />
-            <div>
-              <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-              <p className="text-gray-700">{testimonial.content}</p>
-              <p className="text-yellow-500">
-                {'★'.repeat(testimonial.rating)}
-              </p>
-            </div>
-          </div>
-        ))}
+  if (loading) {
+    return (
+      <div className="text-center">
+        <span className="loading loading-dots loading-xs"></span>
+        <span className="loading loading-dots loading-sm"></span>
+        <span className="loading loading-dots loading-md"></span>
+        <span className="loading loading-dots loading-lg"></span>
       </div>
+    );
+  }
+
+  return (
+    <div className="bg-gray-100 py-12 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="bg-white max-w-4xl mx-auto p-6 min-h-[400px] mt-[2em] border border-red-300">
+        <h3 className="text-center text-2xl font-bold mb-6 text-black">
+          {t('testimonials')}
+        </h3>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {testimonialData.map((item, idx) => (
+            <SwiperSlide className="p-10" key={idx}>
+              <div className="bg-green-500 p-4 text-center rounded-md">
+                <figure className="mb-4">
+                  <img
+                    src={`http://localhost:3000/${item.imageUrl}`}
+                    className="w-16 h-16 mx-auto rounded-full object-cover"
+                    alt={item.name}
+                  />
+                  <figcaption className="mt-2 font-semibold">
+                    {item.name}
+                  </figcaption>
+                </figure>
+                <p className="text-center mb-4 text-black">{item.content}</p>
+                <div className="flex justify-center  text-black">
+                  <StarRatings
+                    rating={item.rating}
+                    starRatedColor="gold"
+                    numberOfStars={5}
+                    name="rating"
+                    starDimension="20px"
+                    starSpacing="2px"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
     </div>
   );
 };

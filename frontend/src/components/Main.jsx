@@ -8,7 +8,7 @@ import Testimonials from '../pages/Testimonials';
 
 const Main = () => {
   return (
-    <section className="bg-yellow-800 container mx-auto">
+    <section className="container mx-auto">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />

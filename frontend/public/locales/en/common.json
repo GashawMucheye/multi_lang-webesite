@@ -14,6 +14,8 @@
   "yourName": "Your name",
   "email": "Email",
   "yourEmail": "Your email",
+  "phone": "phone",
+  "yourPhone": "Your Phone",
   "subject": "Subject",
   "subjectPlaceholder": "Subject",
   "message": "Message",
