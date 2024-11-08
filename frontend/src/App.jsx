@@ -6,14 +6,14 @@ import { ToastContainer } from 'react-toastify';
 const App = () => {
   return (
     <div className="h-screen flex flex-col">
-      <header className="bg-red-500">
+      <header className="w-full fixed bg-gray-300 shadow-sm z-50">
         <Navbar />
       </header>
-      <main className="flex-grow">
+      <main className="flex-grow w-full ">
         <ToastContainer position="bottom-center" limit={1} />
         <Main />
       </main>
-      <footer>
+      <footer className="w-full">
         <Footer />
       </footer>
     </div>

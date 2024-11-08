@@ -41,3 +41,7 @@ npm i express colors dotenv mongoose
 ```js
 npm i nodemailer
 ```
+
+9.creating contextApi in order to make global state
+
+- change theme App

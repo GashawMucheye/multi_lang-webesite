@@ -45,8 +45,8 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="bg-gray-100 py-12 px-6 md:px-12 lg:px-24 min-h-screen">
-      <section className="bg-white max-w-4xl mx-auto p-6 min-h-[400px] mt-[2em] border border-red-300">
+    <div className="py-12 px-6 md:px-12 lg:px-24 min-h-screen container mx-auto  border-green-600">
+      <section className="max-w-4xl mx-auto p-6 min-h-[400px] mt-[4em] border border-red-300">
         <h3 className="text-center text-2xl font-bold mb-6 text-black">
           {t('testimonials')}
         </h3>

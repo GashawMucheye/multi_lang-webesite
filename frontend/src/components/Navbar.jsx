@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n'; // Adjust the path as needed
+import { ThemeChange } from '../contextApi/ContextProvider';
 import { MdDarkMode } from 'react-icons/md';
 import { CiLight } from 'react-icons/ci';
 const Navbar = () => {
   const { t } = useTranslation('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, changeColor } = useContext(ThemeChange);
+  let { userId } = useParams();
 
   const handleLanguageChange = (event) => {
     const selectedLanguage = event.target.value;
@@ -23,7 +25,7 @@ const Navbar = () => {
   }, [i18n.language]);
 
   return (
-    <nav className="bg-slate-600 p-4">
+    <nav className="p-4 border container mx-auto">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* <div className="text-white text-lg font-semibold">Photographer</div> */}
         <Link to={'/'} className="text-white text-lg font-semibold">
@@ -88,12 +90,7 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-        <div
-          className="cursor-pointer"
-          onClick={() => {
-            alert('clicked');
-          }}
-        >
+        <div className="cursor-pointer" onClick={changeColor}>
           {isDark ? <MdDarkMode size={24} /> : <CiLight size={24} />}
         </div>
 
@@ -148,6 +145,15 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               {t('home')}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={`/:userId`}
+              className="block hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              singlePage
             </Link>
           </li>
           <li>

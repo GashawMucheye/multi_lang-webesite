@@ -29,8 +29,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+    <div className="min-h-screen flex items-center justify-center p-6 container mx-auto  border-green-600 bg-slate-600">
+      <div className="shadow-md rounded-lg p-8 max-w-lg w-full">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           {t('contactUs')}
         </h2>

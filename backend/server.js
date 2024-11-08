@@ -2,9 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const colors = require('colors');
 const cors = require('cors');
-const dotenv = require('dotenv');
-
-dotenv.config();
 const app = express();
 
 app.use(cors());
@@ -18,8 +15,10 @@ mongoose
 
 const testimonialsRoute = require('./routes/testimonials');
 const routerMessage = require('./routes/sendEmail');
+const routerGalleries = require('./routes/gallery');
 app.use('/api/testimonials', testimonialsRoute);
 app.use('/api/sendMessage', routerMessage);
+app.use('/api/gallery', routerGalleries);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

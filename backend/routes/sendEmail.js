@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const { createTransport } = require('nodemailer');
-const dotenv = require('dotenv').config();
 
 const routerMessage = Router();
 
