@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ThemeChange } from '../contextApi/ContextProvider';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -27,10 +28,18 @@ const Contact = () => {
     setMessage('');
     setPhone('');
   };
+  const { isDark, changeColor } = useContext(ThemeChange);
 
+  // flex items-center justify-center p-6 container mx-auto  border-green-600 min-h-screen
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 container mx-auto  border-green-600 bg-slate-600">
-      <div className="shadow-md rounded-lg p-8 max-w-lg w-full">
+    <div
+      className={
+        isDark
+          ? 'bg-gray-100 flex items-center justify-center p-6 container mx-auto  border-green-600 min-h-[400px] py-12 '
+          : 'bg-slate-600 flex items-center justify-center p-6 container mx-auto  border-green-600 min-h-[400px]'
+      }
+    >
+      <div className="shadow-md rounded-lg p-8 max-w-lg w-full my-4">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           {t('contactUs')}
         </h2>

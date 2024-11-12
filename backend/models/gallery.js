@@ -1,22 +1,22 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const gallerySchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    description: {
+    slug: {
       type: String,
       required: true,
     },
-    imageUrl: {
+    image: {
       type: String,
       required: true,
     },
     category: {
       type: String,
-      required: true, // Category is now required
+      required: true,
     },
   },
   {
@@ -24,6 +24,6 @@ const gallerySchema = new mongoose.Schema(
   }
 );
 
-const Gallery = mongoose.model('Gallery', gallerySchema);
+const Images = model('Images', userSchema);
 
-module.exports = Gallery;
+module.exports = Images;

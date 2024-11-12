@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Suspense fallback="loading">
+      <Suspense>
         <QueryClientProvider client={queryClient}>
           <ContextProvider>
             <App />

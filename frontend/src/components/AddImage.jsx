@@ -5,10 +5,10 @@ import { toast } from 'react-toastify';
 
 const AddImage = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    category: '',
-    image: null,
+    name: '',
+    slug: '',
+    image: '',
+    category: null,
   });
 
   const handleChange = (e) => {
@@ -25,8 +25,8 @@ const AddImage = () => {
 
     // Create a FormData object to handle the file upload
     const data = new FormData();
-    data.append('title', formData.title);
-    data.append('description', formData.description);
+    data.append('name', formData.name);
+    data.append('slug', formData.slug);
     data.append('category', formData.category);
     data.append('image', formData.image);
 
@@ -53,30 +53,27 @@ const AddImage = () => {
       <h2 className="text-2xl font-bold mb-4">Add an Image</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-700 font-medium">
-            Title
+          <label htmlFor="name" className="block text-gray-700 font-medium">
+            name
           </label>
           <input
             type="text"
-            id="title"
-            name="title"
-            value={formData.title}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="description"
-            className="block text-gray-700 font-medium"
-          >
-            Description
+          <label htmlFor="slug" className="block text-gray-700 font-medium">
+            slug
           </label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
+          <input
+            id="slug"
+            name="slug"
+            value={formData.slug}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded-md"
             required
@@ -86,7 +83,7 @@ const AddImage = () => {
           <label htmlFor="category" className="block text-gray-700 font-medium">
             Category
           </label>
-          <textarea
+          <input
             id="category"
             name="category"
             value={formData.category}
@@ -99,14 +96,16 @@ const AddImage = () => {
           <label htmlFor="image" className="block text-gray-700 font-medium">
             Image
           </label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            onChange={handleFileChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
+          <div>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={handleFileChange}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
         </div>
         <button
           type="submit"

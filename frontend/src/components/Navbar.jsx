@@ -137,7 +137,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <ul className="md:hidden bg-red-600 text-white space-y-3 mt-2 p-4 w-[200px]">
+        <ul className="md:hidden border border-blue-400 text-white space-y-3 mt-2 p-4 w-[200px]">
           <li>
             <Link
               to="/"

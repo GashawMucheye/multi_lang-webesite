@@ -31,11 +31,11 @@ const Gallery = () => {
     <div
       className={
         isDark
-          ? 'bg-gray-100 py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-600'
-          : 'py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-600 bg-slate-600 '
+          ? 'bg-gray-100 py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-600 min-h-screen'
+          : 'bg-slate-600 py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-60 min-h-screen'
       }
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto my-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
           {t('gallery')}
         </h2>

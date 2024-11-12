@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { ThemeChange } from '../contextApi/ContextProvider';
+
 const About = () => {
   const { t } = useTranslation('common');
-
+  const { isDark, changeColor } = useContext(ThemeChange);
+  // className="py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-600 min-h-screen"
   return (
-    <div className="py-12 px-6 md:px-12 lg:px-24 container mx-auto  border-green-600 bg-slate-600">
-      <div className="max-w-5xl mx-auto rounded-lg shadow-lg overflow-hidden lg:flex lg:items-center">
+    <div
+      className={
+        isDark
+          ? 'bg-gray-100 min-h-screen py-12 px-6 md:px-12 lg:px-24 container mx-auto'
+          : 'bg-slate-600 min-h-screen py-12 px-6 md:px-12 lg:px-24 container mx-auto '
+      }
+    >
+      <div className="max-w-5xl mx-auto rounded-lg shadow-lg overflow-hidden lg:flex lg:items-center my-10">
         <div className="lg:w-1/2">
           <img
             src="https://images.unsplash.com/photo-1495580621852-5de0cc907d2f?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with the photographer's image

@@ -11,6 +11,7 @@ import { FaArrowUp } from 'react-icons/fa';
 import AddImage from '../components/AddImage';
 // import Slider from '../components/Slider';
 import { ThemeChange } from '../contextApi/ContextProvider';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const Home = () => {
   const { t } = useTranslation('common');
@@ -41,9 +42,7 @@ const Home = () => {
   return (
     <div
       className={
-        isDark
-          ? 'bg-gray-100 min-h-screen border border-red-500'
-          : 'bg-slate-600 min-h-screen border border-red-500'
+        isDark ? 'bg-gray-100 min-h-screen' : 'bg-slate-600 min-h-screen'
       }
     >
       {/* Hero Section */}
@@ -104,9 +103,13 @@ const Home = () => {
         >
           {t('backToTop')}
         </button> */}
-        <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
-          {showArrow && <FaArrowUp size={34} onClick={scrollToTop} />}
-        </div>
+        <WhatsAppButton />
+        <motion.div
+          whileHover={{ scale: 1.2, color: 'steelblue', cursor: 'pointer' }}
+          style={{ position: 'fixed', bottom: '20px', right: '20px' }}
+        >
+          {showArrow && <FaArrowUp size={24} onClick={scrollToTop} />}
+        </motion.div>
       </div>
     </div>
   );

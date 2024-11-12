@@ -10,6 +10,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  --bg-hover: steelblue;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +25,10 @@
 }
 body {
   overflow-x: hidden;
-  min-height: 100vh;
+  height: 100vh;
 }
 
-nav a:hover {
+nav a {
   text-decoration: none;
 }
 
